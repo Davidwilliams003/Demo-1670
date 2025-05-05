@@ -1,0 +1,23 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "SystemLogs";
+}
+
+<h2>System Logs</h2>
+
+<ul class="list-group mb-4">
+    <li class="list-group-item"><strong>Total Users:</strong> @ViewBag.TotalUsers</li>
+    <li class="list-group-item"><strong>Admins:</strong> @ViewBag.AdminCount</li>
+    <li class="list-group-item"><strong>Job Seekers:</strong> @ViewBag.JobSeekerCount</li>
+    <li class="list-group-item"><strong>Employers:</strong> @ViewBag.EmployerCount</li>
+</ul>
+
+<h4>Recent Activity</h4>
+<ul class="list-group">
+    @foreach (var log in Model)
+    {
+        <li class="list-group-item">@log</li>
+    }
+</ul>
+
+<a asp-action="Dashboard" class="btn btn-secondary mt-3">← Back to Dashboard</a>

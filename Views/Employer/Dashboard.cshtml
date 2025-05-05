@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Employer Dashboard";
+}
+
+<h2>Employer Dashboard</h2>
+
+<div class="employer-actions">
+    <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Logout</a>
+    <a asp-action="Profile" class="btn btn-primary">My Profile</a>
+    <a asp-action="JobListing" class="btn btn-secondary">Job Listings</a>
+    <a asp-action="ViewApplicants" class="btn btn-info">View Applicants</a>
+</div>
+
+<style>
+    .employer-actions {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .employer-actions .btn {
+        min-width: 160px;
+        text-align: center;
+    }
+</style>

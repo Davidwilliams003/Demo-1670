@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2>Admin Dashboard</h2>
+
+<div class="admin-actions">
+    <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Logout</a>
+    <a asp-action="ManageUsers" class="btn btn-primary">Manage Users</a>
+    <a asp-action="SystemLogs" class="btn btn-secondary">System Logs</a>
+</div>
+
+<style>
+    .admin-actions {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+        .admin-actions .btn {
+            min-width: 150px;
+            text-align: center;
+        }
+</style>

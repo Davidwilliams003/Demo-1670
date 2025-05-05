@@ -1,0 +1,16 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = "EmployerProfile";
+}
+
+<h2>Employer Profile</h2>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title">@Model.CompanyName</h4>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Description:</strong> @Model.Description</p>
+    </div>
+</div>
+
+<a asp-action="Dashboard" class="btn btn-secondary mt-3">Back to Dashboard</a>

@@ -1,0 +1,57 @@
+﻿@model List<Demo_1670.Models.JobListing>
+@{
+    ViewData["Title"] = "Job Listings";
+}
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+<a asp-action="Dashboard" class="btn btn-secondary mt-3">Back to Dashboard</a>
+
+<h2>Job Listings</h2>
+
+<!-- Form tạo job mới -->
+<form asp-action="Create" method="post" class="mb-4">
+    <div class="form-row">
+        <input name="Title" placeholder="Job Title" class="form-control col mr-2" required />
+        <input name="Location" placeholder="Location" class="form-control col mr-2" required />
+        <button type="submit" class="btn btn-success">Add</button>
+    </div>
+</form>
+
+<!-- Bảng danh sách job -->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Posted Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            var job = Model[i];
+            <tr>
+                <form asp-action="Edit" method="post">
+                    <input type="hidden" name="index" value="@i" />
+                <td><input name="Title" value="@job.Title" class="form-control" /></td>
+                <td><input name="Location" value="@job.Location" class="form-control" /></td>
+                <td><input name="PostedDate" type="date" value="@job.PostedDate.ToString("yyyy-MM-dd")" class="form-control" /></td>
+                <td>
+                    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                </td>
+                </form>
+                <td>
+                    <form asp-action="Delete" method="post" asp-route-index="@i" onsubmit="return confirm('Delete this job?');">
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+﻿@model Demo_1670.Models.JobSeekerProfile
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+<a asp-action="Dashboard" class="btn btn-secondary mt-3">Back to Dashboard</a>
+<h2>Edit Profile</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
+
+<form method="post">
+    <div class="mb-3">
+        <label>Full Name</label>
+        <input asp-for="FullName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Skills</label>
+        <input asp-for="Skills" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Experience</label>
+        <input asp-for="Experience" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+</form>

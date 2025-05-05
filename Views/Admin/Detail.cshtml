@@ -1,0 +1,22 @@
+﻿@model Demo_1670.Models.User
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<h2 class="mb-4">User Details</h2>
+
+<table class="table table-bordered w-50">
+    <tbody>
+        <tr>
+            <th scope="row">Username</th>
+            <td>@Model.Username</td>
+        </tr>
+        <tr>
+            <th scope="row">Role</th>
+            <td>@Model.Role</td>
+        </tr>
+    </tbody>
+</table>
+
+<a asp-action="ManageUsers" class="btn btn-secondary mt-3">← Back to User List</a>

@@ -1,0 +1,47 @@
+﻿@model List<Demo_1670.Models.ApplicantViewModel>
+
+@{
+    ViewData["Title"] = "View Applicants";
+    var updatedUser = TempData["UpdatedUser"] as string;
+    var statusMessage = TempData["StatusMessage"] as string;
+}
+<a asp-action="Dashboard" class="btn btn-secondary mt-3">Back to Dashboard</a>
+<h2>Applicants</h2>
+
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Job Title</th>
+            <th>Status</th>
+            <th style="width: 150px;">Update</th> <!-- Giới hạn chiều rộng cột update -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var applicant in Model)
+        {
+            <tr>
+                <td>@applicant.Name</td>
+                <td>@applicant.JobTitle</td>
+                <td>
+                    <form asp-action="UpdateStatus" method="post" class="d-flex align-items-center gap-2">
+                        <input type="hidden" name="username" value="@applicant.Name" />
+                        <input type="hidden" name="jobTitle" value="@applicant.JobTitle" />
+                        <select name="status" class="form-select form-select-sm" style="width: auto;">
+                            <option value="Pending" selected="@(applicant.Status == "Pending" ? "selected" : null)">Pending</option>
+                            <option value="Accepted" selected="@(applicant.Status == "Accepted" ? "selected" : null)">Accepted</option>
+                            <option value="Rejected" selected="@(applicant.Status == "Rejected" ? "selected" : null)">Rejected</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                    </form>
+                </td>
+                <td style="white-space: nowrap;">
+                    @if (!string.IsNullOrEmpty(updatedUser) && updatedUser == applicant.Name)
+                    {
+                        <span class="text-success">Update successful</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

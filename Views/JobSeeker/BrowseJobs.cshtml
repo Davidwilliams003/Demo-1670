@@ -1,0 +1,35 @@
+﻿@model List<dynamic>
+@{
+    ViewData["Title"] = "Browse Jobs";
+}
+<a asp-action="Dashboard" class="btn btn-secondary mt-3">Back to Dashboard</a>
+<h2>Available Jobs</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Job Title</th>
+            <th>Location</th>
+            <th>Date Posted</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var job in Model)
+        {
+            <tr>
+                <td>@job.Title</td>
+                <td>@job.Location</td>
+                <td>@job.DatePosted.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-action="Apply" asp-route-jobTitle="@job.Title" class="btn btn-sm btn-primary">Apply</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
